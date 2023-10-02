@@ -1,8 +1,9 @@
 
 // Reverse an array
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Reverse_an_array {
+public class ReverseArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the size of the array");
@@ -13,7 +14,23 @@ public class Reverse_an_array {
             arr[i] = sc.nextInt();
         }
         // call the functions and try the code here
+        // Make a copy of the original array
+        int[] arrCopy = Arrays.copyOf(arr, arr.length);
+
+        // Print the original array
+        System.out.println("Original Array:");
+        print(arr);
+
+        System.out.println("Reversed Array (using extra array):");
+        using_extra_array(arr);
+
+        System.out.println("Reversed Array (without using extra array):");
         without_using_extra_array(arr);
+
+        // Call the using_recursion method with the copy of the original array
+        System.out.println("Reversed Array (using recursion):");
+        using_recursion(arrCopy, 0, arrCopy.length - 1);
+        print(arrCopy); // Print the reversed array here
         sc.close();
     }
 
@@ -48,7 +65,6 @@ public class Reverse_an_array {
         arr[e] = temp;
         // call for thee next indexes
         using_recursion(arr, s + 1, e - 1);
-
     }
 
     // to print the array
